@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.http.HttpStatus;
@@ -62,7 +64,7 @@ public class CourseController {
 				responseMessage.setResult(course1);
 				responseMessage.setStatus(200);
 				responseMessage.setStatusText("SUCCESS");
-				return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.OK);
+				return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.CREATED);
 			}
 		}
 		catch(Exception e)
@@ -147,7 +149,7 @@ public class CourseController {
 		
 		try {
 			
-			if(courseIsPresent(id,responseMessage))
+			if(courseIsPresent(id))
 			{
 				courseService.removeCourseById(id);
 			
@@ -165,6 +167,41 @@ public class CourseController {
 		
 		return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.NOT_FOUND);
 	} 
+	
+	
+	@PutMapping("/update")
+	public ResponseEntity<?> updateCourse(@RequestParam Integer id,@Valid @RequestBody CourseDto course)
+	{
+		ResponseMessage<Course> responseMessage = new ResponseMessage<Course>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found, invalid ID");
+		Course course1=null;
+		
+		try {
+			
+			if(courseIsPresent(id))
+			{
+				course1=courseService.updateCourseById(id, course);
+			
+				if(course1!=null)
+				{
+					responseMessage.setResult(course1);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.OK);
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		
+		return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+	}
+	
 	
 	
 	
@@ -185,7 +222,7 @@ public class CourseController {
 	}
 	
 	
-	public boolean courseIsPresent(Integer id,ResponseMessage<Course> responseMessage)
+	public boolean courseIsPresent(Integer id)
 	{
 		List<Integer> clist=courseRepository.getAllCourseId();
 		
