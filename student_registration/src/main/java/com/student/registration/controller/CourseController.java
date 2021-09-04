@@ -138,6 +138,36 @@ public class CourseController {
 		return new ResponseEntity<ResponseMessage<List<Course>>>(responseMessage, HttpStatus.NOT_FOUND);
 	}
 	
+	@DeleteMapping("/remove/{id}")
+	public ResponseEntity<?> deleteById(@PathVariable Integer id)
+	{
+		ResponseMessage<Course> responseMessage = new ResponseMessage<Course>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		try {
+			
+			if(courseIsPresent(id,responseMessage))
+			{
+				courseService.removeCourseById(id);
+			
+				responseMessage.setResult(null);
+				responseMessage.setStatus(200);
+				responseMessage.setStatusText("SUCCESS");
+				return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.OK);
+			}
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.NOT_FOUND);
+	} 
+	
+	
+	
 	public boolean ifNotDupliacte(CourseDto course,ResponseMessage<Course> responseMessage)
 	{
 		List<Integer> olist=courseRepository.getAllCourseNo();
@@ -148,6 +178,19 @@ public class CourseController {
 		{
 			responseMessage.setStatus(503);
 			responseMessage.setStatusText("Course Number already exist");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	
+	public boolean courseIsPresent(Integer id,ResponseMessage<Course> responseMessage)
+	{
+		List<Integer> clist=courseRepository.getAllCourseId();
+		
+		if(!clist.contains(id))
+		{
 			return false;
 		}
 		
