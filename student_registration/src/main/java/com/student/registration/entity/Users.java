@@ -1,5 +1,6 @@
 package com.student.registration.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Users {
@@ -47,15 +50,20 @@ public class Users {
 	private Course course;
 	
 	
-	@ManyToMany(targetEntity = Role.class,cascade = CascadeType.ALL )
-	private Set<Role> roles;
+	@ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+	@JoinTable(name = "users_roles",
+		joinColumns = @JoinColumn(name = "users_id"),
+		inverseJoinColumns = @JoinColumn(name = "roles_id")
+			)
+	@JsonIgnore
+	private List<Role> roles;
 
 	public Users() {
 		super();
 	}
 
 	public Users(Integer id, String firstName, String secondName, String emailId, String mobileNumber, String password,
-			String username, String gender, String dateOfBirth, Course course, Set<Role> roles) {
+			String username, String gender, String dateOfBirth, Course course, List<Role> roles) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -150,11 +158,11 @@ public class Users {
 		this.course = course;
 	}
 
-	public Set<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 

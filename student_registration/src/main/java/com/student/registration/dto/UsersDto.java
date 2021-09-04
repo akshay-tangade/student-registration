@@ -1,5 +1,6 @@
 package com.student.registration.dto;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -48,14 +49,14 @@ public class UsersDto {
 	
 	
 	@ManyToMany(targetEntity = Role.class,cascade = CascadeType.ALL )
-	private Set<RoleDto> roles;
+	private List<RoleDto> roles;
 
 	public UsersDto() {
 		super();
 	}
 
 	public UsersDto(Integer id, String firstName, String secondName, String emailId, String mobileNumber, String password,
-			String username, String gender, String dateOfBirth, CourseDto course, Set<RoleDto> roles) {
+			String username, String gender, String dateOfBirth, CourseDto course, List<RoleDto> roles) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -150,11 +151,11 @@ public class UsersDto {
 		this.course = course;
 	}
 
-	public Set<RoleDto> getRoles() {
+	public List<RoleDto> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<RoleDto> roles) {
+	public void setRoles(List<RoleDto> roles) {
 		this.roles = roles;
 	}
 
