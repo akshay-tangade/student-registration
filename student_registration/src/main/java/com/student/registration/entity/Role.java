@@ -1,4 +1,4 @@
-package com.student.registration.entiy;
+package com.student.registration.entity;
 
 import java.util.HashSet;
 import java.util.Set;

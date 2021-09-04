@@ -1,35 +1,38 @@
-package com.student.registration.entiy;
+package com.student.registration.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-@Entity
-public class Course {
+import org.hibernate.validator.constraints.UniqueElements;
+
+
+public class CourseDto {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(nullable=false,name="course_no",unique=true)
+	@NotNull(message = "{course.number.nonempty}")
 	private Integer courseNo;
 	
-	@Column(nullable=false,name="course_name")
+	@NotBlank(message = "{course.name.nonempty}")
 	private String courseName;
 	
-	@Column(nullable=false,name="course_duration")
+	@NotNull(message = "{course.duration.nonempty}")
 	private Integer courseDuration;
 	
-	@Column(nullable=false,name="course_fee")
+	@NotNull(message = "{course.fee.nonempty}")
 	private double courseFee;
 
-	public Course() {
+	public CourseDto() {
 		super();
 	}
 
-	public Course(Integer id, Integer courseNo, String courseName, Integer courseDuration, double courseFee) {
+	public CourseDto(Integer id, Integer courseNo, String courseName, Integer courseDuration, double courseFee) {
 		super();
 		this.id = id;
 		this.courseNo = courseNo;
@@ -83,5 +86,4 @@ public class Course {
 		return "Course [id=" + id + ", courseNo=" + courseNo + ", courseName=" + courseName + ", courseDuration="
 				+ courseDuration + ", courseFee=" + courseFee + "]";
 	}
-
 }

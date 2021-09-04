@@ -1,0 +1,72 @@
+duplicate.username=Duplicate entry found for Username: {0}.
+duplicate.emailid=Duplicate entry found for EmailId: {0}.
+duplicate.mobilenumber=Duplicate entry found for Mobile Number: {0}
+duplicate.values=Following entries were found duplicate : {0}
+duplicate.assessment.type=Duplicate entry found for Assessment Type: {0}.
+questionnaire.not.found=Questionnaire with id: {0} not found.
+user.not.found=User with id: {0} not found.
+username.not.found=User with username: {0} not found.
+assessment.type.not.found=Assessment type with id: {0} not found.
+duplicate.username.or.email=Duplicate userName/emailId found for following  records:  
+user.not.found.for.records=User not found for following records: 
+duplicate.emailid.for.records=Duplicate emailId found for following  records:
+
+# validation message for user
+first.name.nonempty=Please provide first name.
+last.name.nonempty=Please provide last name.
+email.valid=Please provide valid email id.
+email.nonempty=Please provide email id.
+gender.nonempty=Please provide gender.
+is.active.nonempty=Please provide active status.
+date.of.join.nonempty=Please provide date of joining.
+date.of.join.invalid=Please provide valid date of joining.
+username.nonempty=Please provide username.
+password.nonempty=Please provide password.
+emailid.nonempty=Please provide emailid
+new.password.nonempty=Please provide new password
+new.emailid.nonempty=Please provide new emailid
+users.created=Successfully created {0} users.
+users.updated=Successfully updated {0} users.
+created.user.id.nonempty=Please provide created user id.
+updated.user.id.nonempty=Please provide updated user id.
+inventoryData.created=Successfully created {0} inventory.
+inventoryData.notcreated=File is not in correct format.
+item.not.found=Item with id: {0} not found.
+
+# user purchase limit
+limit.exceed.month=You have used your monthly limit. Available Monthly limit balance is Rs.  
+limit.exceed.year=You have used your yearly limit. Available Yearly limit balance is Rs. 
+limit.exceed.month.admin=Customer had used monthly limit. Available Monthly limit balance is Rs.  
+limit.exceed.year.admin=Customer had used yearly limit. Available Yearly limit balance is Rs. 
+
+# email subjects
+subject.order=Shop with social distance : Order No 
+subject.emailid.change=Shop with social distance : Email Id Changed 
+subject.password.change=Shop with social distance : Password Changed
+subject.new.account=Shop with social distance : Account Created 
+subject.password.forgot=Shop with social distance : Forgot Password
+
+# email notification after changing email id
+emailid.changed=This is to inform you that you have just changed your email id. Your previous email id was 
+
+# email notification after changing password
+password.changed=This is to inform you that you have just changed your account password.<br>If this wasn't you, please report immediately at shopwithsocialdistance@gmail.com ...!
+# email notification of new password, when user forgets password
+password.forgot=A request to generate new password was made for your account. The new password is 
+
+# thank you message
+thankyou=Thank you for using <b>Shop with Social Distance App</b>.
+
+email.notification.ending=In case of any queries, please reach out to us at shopwithsocialdistance@gmail.com ...!
+
+# email notification after updating Order delivery time
+email.deliverytime.changed=We are sorry to inform you that due to unavoidable circumstances at our end, we will not be able to deliver your order on expected date and time. <br>New delivery time is as follows...
+
+# email notification to customer after cancelling order
+email.customer.cancel.order=We are sorry to inform you that due to some unavoidable conditions, we will not be able to complete your order.<br>Your order has been <b>cancelled</b>...!<br><b>Cancellation Remark</b>: 
+
+# email notification to aggregator after cancelling order
+email.aggregator.cancel.order=Hi <b>{0}</b>,<br><br> Please take a note that, the order {1} has been cancelled <br><b>Cancellation Remark</b>: {2}<br><br> Regards,<b><br> Admin <br>{3} Store </b>
+
+# new account create message
+new.account.create=Your account is successfully created in association with <b>{0}</b> store. <br>Your registered email id is {1}. <br><br><b>Login Credentials</b>:<br><b>Mobile Number:</b> {2} <br><b>Password:</b> Create your password when you will sign in to <b>Shop with Social Distance App</b> for the first time.
