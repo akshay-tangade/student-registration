@@ -75,6 +75,69 @@ public class CourseController {
 		return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
 	}
 	
+	@GetMapping("/view/{id}")
+	public ResponseEntity<?> getCourseById(@PathVariable Integer id)
+	{
+		ResponseMessage<Course> responseMessage = new ResponseMessage<Course>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		Course course=null;
+		
+		try {
+			
+			course=courseService.getCourseById(id);
+			
+			if(course!=null)
+			{
+				responseMessage.setResult(course);
+				responseMessage.setStatus(200);
+				responseMessage.setStatusText("SUCCESS");
+				responseMessage.setTotalElements(1);
+				return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.OK);
+			}
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.NOT_FOUND);
+	}
+	
+	
+	@GetMapping("/view")
+	public ResponseEntity<?> getAllCourses()
+	{
+		ResponseMessage<List<Course>> responseMessage = new ResponseMessage<List<Course>>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		List<Course> course=new ArrayList<>();
+		
+		try {
+			
+			course=courseService.getAllCourses();
+			
+			if(course.size()>0)
+			{
+				responseMessage.setResult(course);
+				responseMessage.setStatus(200);
+				responseMessage.setStatusText("SUCCESS");
+				responseMessage.setTotalElements(course.size());
+				return new ResponseEntity<ResponseMessage<List<Course>>>(responseMessage, HttpStatus.OK);
+			}
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<List<Course>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<List<Course>>>(responseMessage, HttpStatus.NOT_FOUND);
+	}
+	
 	public boolean ifNotDupliacte(CourseDto course,ResponseMessage<Course> responseMessage)
 	{
 		List<Integer> olist=courseRepository.getAllCourseNo();
