@@ -101,205 +101,205 @@ public class UsersController {
 	}
 	
 	
-//	@PutMapping("/update")
-//	public ResponseEntity<?> updateCourse(@RequestParam Integer id,@Valid @RequestBody UsersDto user)
-//	{
-//		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
-//		responseMessage.setStatus(404);
-//		responseMessage.setStatusText("Course Not found, invalid ID");
-//		Users student=null;
-//		
-//		try {
-//			
-//			if(userIsPresent(id))
-//			{
-//				student=usersService.updateUsersById(id, user);
-//			
-//				if(student!=null)
-//				{
-//					responseMessage.setResult(student);
-//					responseMessage.setStatus(200);
-//					responseMessage.setStatusText("SUCCESS");
-//					return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.OK);
-//				}
-//			}
-//		}
-//		catch(Exception e)
-//		{
-//			responseMessage.setStatusText(e.getMessage());
-//			return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
-//		}
-//		
-//		
-//		return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
-//	}
-//	
-//	@GetMapping("/view/{id}")
-//	public ResponseEntity<?> getUsersById(@PathVariable Integer id)
-//	{
-//		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
-//		responseMessage.setStatus(404);
-//		responseMessage.setStatusText("Course Not found");
-//		
-//		Users user=null;
-//		
-//		try {
-//			
-//			if(userIsPresent(id)) {
-//				user=usersService.getUsersById(id);
-//				
-//				if(user!=null)
-//				{
-//					responseMessage.setResult(user);
-//					responseMessage.setStatus(200);
-//					responseMessage.setStatusText("SUCCESS");
-//					responseMessage.setTotalElements(1);
-//					return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.OK);
-//				}
-//			}
-//		}
-//		catch(Exception e)
-//		{
-//			responseMessage.setStatusText(e.getMessage());
-//			return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
-//		}
-//		
-//		return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.NOT_FOUND);
-//	}
-//	
-//	
-//	@GetMapping("/view")
-//	public ResponseEntity<?> getAllUsers()
-//	{
-//		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
-//		responseMessage.setStatus(404);
-//		responseMessage.setStatusText("Course Not found");
-//		
-//		List<Users> user=null;
-//		
-//		try {
-//			
-//			
-//				user=usersService.getAllUsers();
-//				
-//				if(user!=null)
-//				{
-//					responseMessage.setResult(user);
-//					responseMessage.setStatus(200);
-//					responseMessage.setStatusText("SUCCESS");
-//					responseMessage.setTotalElements(1);
-//					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
-//				}
-//			
-//		}
-//		catch(Exception e)
-//		{
-//			responseMessage.setStatusText(e.getMessage());
-//			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
-//		}
-//		
-//		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
-//	}	
-//	
-//	
-//	@GetMapping("/view/admin")
-//	public ResponseEntity<?> getAllAdmins()
-//	{
-//		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
-//		responseMessage.setStatus(404);
-//		responseMessage.setStatusText("Course Not found");
-//		
-//		List<Users> user=null;
-//		
-//		try {
-//			
-//			
-//				user=usersService.getAllAdmins();
-//				
-//				if(user!=null)
-//				{
-//					responseMessage.setResult(user);
-//					responseMessage.setStatus(200);
-//					responseMessage.setStatusText("SUCCESS");
-//					responseMessage.setTotalElements(1);
-//					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
-//				}
-//			
-//		}
-//		catch(Exception e)
-//		{
-//			responseMessage.setStatusText(e.getMessage());
-//			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
-//		}
-//		
-//		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
-//	}
-//	
-//	@GetMapping("/view/principal")
-//	public ResponseEntity<?> getAllPrincipal()
-//	{
-//		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
-//		responseMessage.setStatus(404);
-//		responseMessage.setStatusText("Course Not found");
-//		
-//		List<Users> user=null;
-//		
-//		try {
-//			
-//			
-//				user=usersService.getAllPrincipal();
-//				
-//				if(user!=null)
-//				{
-//					responseMessage.setResult(user);
-//					responseMessage.setStatus(200);
-//					responseMessage.setStatusText("SUCCESS");
-//					responseMessage.setTotalElements(1);
-//					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
-//				}
-//			
-//		}
-//		catch(Exception e)
-//		{
-//			responseMessage.setStatusText(e.getMessage());
-//			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
-//		}
-//		
-//		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
-//	}
-//	
-//	@GetMapping("/view/faculty")
-//	public ResponseEntity<?> getAllFaculty()
-//	{
-//		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
-//		responseMessage.setStatus(404);
-//		responseMessage.setStatusText("Course Not found");
-//		
-//		List<Users> user=null;
-//		
-//		try {
-//			
-//			
-//				user=usersService.getAllFaculty();
-//				
-//				if(user!=null)
-//				{
-//					responseMessage.setResult(user);
-//					responseMessage.setStatus(200);
-//					responseMessage.setStatusText("SUCCESS");
-//					responseMessage.setTotalElements(1);
-//					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
-//				}
-//			
-//		}
-//		catch(Exception e)
-//		{
-//			responseMessage.setStatusText(e.getMessage());
-//			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
-//		}
-//		
-//		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
-//	}
+	@PutMapping("/update")
+	public ResponseEntity<?> updateCourse(@RequestParam Integer id,@Valid @RequestBody UsersDto user)
+	{
+		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found, invalid ID");
+		Users student=null;
+		
+		try {
+			
+			if(userIsPresent(id))
+			{
+				student=usersService.updateUsersById(id, user);
+			
+				if(student!=null)
+				{
+					responseMessage.setResult(student);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.OK);
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		
+		return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+	}
+	
+	@GetMapping("/view/{id}")
+	public ResponseEntity<?> getUsersById(@PathVariable Integer id)
+	{
+		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		Users user=null;
+		
+		try {
+			
+			if(userIsPresent(id)) {
+				user=usersService.getUsersById(id);
+				
+				if(user!=null)
+				{
+					responseMessage.setResult(user);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					responseMessage.setTotalElements(1);
+					return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.OK);
+				}
+			}
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.NOT_FOUND);
+	}
+	
+	
+	@GetMapping("/view")
+	public ResponseEntity<?> getAllUsers()
+	{
+		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		List<Users> user=null;
+		
+		try {
+			
+			
+				user=usersService.getAllUsers();
+				
+				if(user!=null)
+				{
+					responseMessage.setResult(user);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					responseMessage.setTotalElements(1);
+					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
+				}
+			
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
+	}	
+	
+	
+	@GetMapping("/view/admin")
+	public ResponseEntity<?> getAllAdmins()
+	{
+		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		List<Users> user=null;
+		
+		try {
+			
+			
+				user=usersService.getAllAdmins();
+				
+				if(user!=null)
+				{
+					responseMessage.setResult(user);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					responseMessage.setTotalElements(1);
+					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
+				}
+			
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping("/view/principal")
+	public ResponseEntity<?> getAllPrincipal()
+	{
+		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		List<Users> user=null;
+		
+		try {
+			
+			
+				user=usersService.getAllPrincipal();
+				
+				if(user!=null)
+				{
+					responseMessage.setResult(user);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					responseMessage.setTotalElements(1);
+					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
+				}
+			
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping("/view/faculty")
+	public ResponseEntity<?> getAllFaculty()
+	{
+		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		List<Users> user=null;
+		
+		try {
+			
+			
+				user=usersService.getAllFaculty();
+				
+				if(user!=null)
+				{
+					responseMessage.setResult(user);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					responseMessage.setTotalElements(1);
+					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
+				}
+			
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
+	}
 	
 	public boolean userIsPresent(Integer id)
 	{
