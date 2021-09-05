@@ -50,7 +50,7 @@ public class Users {
 	private Course course;
 	
 	
-	@ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles",
 		joinColumns = @JoinColumn(name = "users_id"),
 		inverseJoinColumns = @JoinColumn(name = "roles_id")

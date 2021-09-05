@@ -88,15 +88,18 @@ public class CourseController {
 		
 		try {
 			
-			course=courseService.getCourseById(id);
-			
-			if(course!=null)
+			if(courseIsPresent(id))
 			{
-				responseMessage.setResult(course);
-				responseMessage.setStatus(200);
-				responseMessage.setStatusText("SUCCESS");
-				responseMessage.setTotalElements(1);
-				return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.OK);
+				course=courseService.getCourseById(id);
+			
+				if(course!=null)
+				{
+					responseMessage.setResult(course);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					responseMessage.setTotalElements(1);
+					return new ResponseEntity<ResponseMessage<Course>>(responseMessage, HttpStatus.OK);
+				}
 			}
 		}
 		catch(Exception e)

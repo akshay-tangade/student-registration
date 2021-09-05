@@ -13,20 +13,20 @@ import com.student.registration.dto.UsersDto;
 import com.student.registration.entity.Course;
 import com.student.registration.entity.Role;
 import com.student.registration.entity.Users;
-import com.student.registration.repository.UsersRepository;
+import com.student.registration.repository.StudentRepository;
 
 @Service
-public class UsersService {
+public class StudentService {
 	
 	@Autowired
-	private UsersRepository usersRepository;
+	private StudentRepository studentRepository;
 	
 	public Users creatStudent(UsersDto user)
 	{
 		Users usr;
 		usr=getUserDetails(user);
 		
-		return usersRepository.save(usr);
+		return studentRepository.save(usr);
 	}
 	
 	
@@ -68,6 +68,27 @@ public class UsersService {
 		user1.setRoles(role);
 
 		return user1;
+	}
+	
+	
+	public Users getStudentById(Integer id)
+	{
+		System.out.println("ksdjnkjdnak     sassadadas");
+		return studentRepository.getById(id);
+	}
+	
+	public void removeStudentById(Integer id)
+	{
+		studentRepository.deleteById(id);
+	}
+	
+	
+	public Users updateStudentById(Integer id,UsersDto user)
+	{
+		Users usr;
+		usr=getUserDetails(user);
+		usr.setId(id);
+		return studentRepository.save(usr);
 	}
 
 }
