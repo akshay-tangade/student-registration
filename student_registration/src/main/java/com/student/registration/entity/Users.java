@@ -55,7 +55,6 @@ public class Users {
 		joinColumns = @JoinColumn(name = "users_id"),
 		inverseJoinColumns = @JoinColumn(name = "roles_id")
 			)
-	@JsonIgnore
 	private List<Role> roles;
 
 	public Users() {

@@ -11,4 +11,7 @@ public interface StudentRepository extends JpaRepository<Users, Integer> {
 	
 	@Query("SELECT u.id FROM Users u")
 	public List<Integer> getAllStudentId();
+	
+	@Query(value="select u.* from users u join users_roles ur on u.id=ur.users_id join role r on r.id=ur.roles_id where r.id=4",nativeQuery = true)
+	public List<Users> findAllStudent();
 }

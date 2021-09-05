@@ -21,6 +21,14 @@ public class StudentService {
 	@Autowired
 	private StudentRepository studentRepository;
 	
+	public StudentRepository getStudentRepository() {
+		return studentRepository;
+	}
+
+	public void setStudentRepository(StudentRepository studentRepository) {
+		this.studentRepository = studentRepository;
+	}
+
 	public Users creatStudent(UsersDto user)
 	{
 		Users usr;
@@ -71,10 +79,14 @@ public class StudentService {
 	}
 	
 	
+	public List<Users> getAllStudents()
+	{
+		return studentRepository.findAllStudent();
+	}
+	
 	public Users getStudentById(Integer id)
 	{
-		System.out.println("ksdjnkjdnak     sassadadas");
-		return studentRepository.getById(id);
+		return studentRepository.findById(id).get();
 	}
 	
 	public void removeStudentById(Integer id)

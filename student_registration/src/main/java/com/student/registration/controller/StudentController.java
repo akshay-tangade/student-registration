@@ -75,7 +75,7 @@ public class StudentController {
 
 	
 	@GetMapping("/view/{id}")
-	public ResponseEntity<?> getCourseById(@PathVariable Integer id)
+	public ResponseEntity<?> getStudentsById(@PathVariable Integer id)
 	{
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
@@ -105,6 +105,40 @@ public class StudentController {
 		}
 		
 		return new ResponseEntity<ResponseMessage<Users>>(responseMessage, HttpStatus.NOT_FOUND);
+	}
+	
+	
+	@GetMapping("/view")
+	public ResponseEntity<?> getAllStudents()
+	{
+		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
+		responseMessage.setStatus(404);
+		responseMessage.setStatusText("Course Not found");
+		
+		List<Users> user=null;
+		
+		try {
+			
+			
+				user=studentService.getAllStudents();
+				
+				if(user!=null)
+				{
+					responseMessage.setResult(user);
+					responseMessage.setStatus(200);
+					responseMessage.setStatusText("SUCCESS");
+					responseMessage.setTotalElements(1);
+					return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.OK);
+				}
+			
+		}
+		catch(Exception e)
+		{
+			responseMessage.setStatusText(e.getMessage());
+			return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.SERVICE_UNAVAILABLE);
+		}
+		
+		return new ResponseEntity<ResponseMessage<List<Users>>>(responseMessage, HttpStatus.NOT_FOUND);
 	}
 	
 	
