@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.student.registration.dto.UsersDto;
 import com.student.registration.entity.Users;
@@ -32,6 +34,8 @@ public class UsersController {
 	
 	@Autowired
 	private UsersRepository usersRepository;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UsersController.class);
 
 	public UsersService getUsersService() {
 		return usersService;
@@ -44,9 +48,10 @@ public class UsersController {
 	@PostMapping("/register")
 	public ResponseEntity<?> createCourse(@Valid @RequestBody UsersDto users)
 	{
+		LOGGER.info("Web Service called: /users/register");
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Unable to add course");
+		responseMessage.setStatusText("Unable to add User");
 		Users user1=null;
 		
 		try {
@@ -77,9 +82,11 @@ public class UsersController {
 	{
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("User Not found");
 		
 		try {
+			
+			LOGGER.info("Web Service called: /users/remove/{id}");
 			
 			if(userIsPresent(id))
 			{
@@ -106,8 +113,10 @@ public class UsersController {
 	{
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found, invalid ID");
+		responseMessage.setStatusText("User Not found, invalid ID");
 		Users student=null;
+		
+		LOGGER.info("Web Service called: /users/update");
 		
 		try {
 			
@@ -139,7 +148,9 @@ public class UsersController {
 	{
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("User Not found");
+		
+		LOGGER.info("Web Service called: /users/view/{id}");
 		
 		Users user=null;
 		
@@ -173,7 +184,9 @@ public class UsersController {
 	{
 		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("User Not found");
+		
+		LOGGER.info("Web Service called: /users/view");
 		
 		List<Users> user=null;
 		
@@ -207,7 +220,9 @@ public class UsersController {
 	{
 		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("User Not found");
+		
+		LOGGER.info("Web Service called: /users/view/admin");
 		
 		List<Users> user=null;
 		
@@ -240,7 +255,9 @@ public class UsersController {
 	{
 		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("User Not found");
+		
+		LOGGER.info("Web Service called: /users/view/principal");
 		
 		List<Users> user=null;
 		
@@ -273,7 +290,9 @@ public class UsersController {
 	{
 		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("User Not found");
+		
+		LOGGER.info("Web Service called: /users/view/faculty");
 		
 		List<Users> user=null;
 		

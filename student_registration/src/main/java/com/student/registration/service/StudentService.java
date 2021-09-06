@@ -13,6 +13,8 @@ import com.student.registration.dto.UsersDto;
 import com.student.registration.entity.Course;
 import com.student.registration.entity.Role;
 import com.student.registration.entity.Users;
+import com.student.registration.repository.CourseRepository;
+import com.student.registration.repository.RoleRepository;
 import com.student.registration.repository.StudentRepository;
 
 @Service
@@ -20,6 +22,12 @@ public class StudentService {
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	@Autowired
+	private CourseRepository courseRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 	
 	public StudentRepository getStudentRepository() {
 		return studentRepository;
@@ -53,11 +61,12 @@ public class StudentService {
 		
 		Course course=new Course();
 		
-		course.setId(user.getCourse().getId());
-		course.setCourseName(user.getCourse().getCourseName());
-		course.setCourseNo(user.getCourse().getCourseNo());
-		course.setCourseDuration(user.getCourse().getCourseDuration());
-		course.setCourseFee(user.getCourse().getCourseFee());
+		course=courseRepository.findById(user.getCourse().getId()).get();
+//		course.setId(user.getCourse().getId());
+//		course.setCourseName(user.getCourse().getCourseName());
+//		course.setCourseNo(user.getCourse().getCourseNo());
+//		course.setCourseDuration(user.getCourse().getCourseDuration());
+//		course.setCourseFee(user.getCourse().getCourseFee());
 		
 		user1.setCourse(course);
 		
@@ -67,8 +76,10 @@ public class StudentService {
 		{
 			Role role1=new Role();
 			
-			role1.setId(ro.getId());
-			role1.setRoleName(ro.getRoleName());
+			role1=roleRepository.findById(ro.getId()).get();
+			
+//			role1.setId(ro.getId());
+//			role1.setRoleName(ro.getRoleName());
 
 			role.add(role1);
 		}

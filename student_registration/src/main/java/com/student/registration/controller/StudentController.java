@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +37,8 @@ public class StudentController {
 	@Autowired
 	private StudentRepository studentRepository;
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
+	
 	public StudentService getStudentService() {
 		return studentService;
 	}
@@ -48,8 +52,10 @@ public class StudentController {
 	{
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Unable to add course");
+		responseMessage.setStatusText("Unable to add Student");
 		Users user1=null;
+		
+		LOGGER.info("Web Service called: /student/register");
 		
 		try {
 			
@@ -79,7 +85,9 @@ public class StudentController {
 	{
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("Student Not found");
+		
+		LOGGER.info("Web Service called: /student/view/{id}");
 		
 		Users user=null;
 		
@@ -113,7 +121,9 @@ public class StudentController {
 	{
 		ResponseMessage<List<Users>> responseMessage = new ResponseMessage<List<Users>>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("Student Not found");
+		
+		LOGGER.info("Web Service called: /student/view");
 		
 		List<Users> user=null;
 		
@@ -147,7 +157,9 @@ public class StudentController {
 	{
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found");
+		responseMessage.setStatusText("Student Not found");
+		
+		LOGGER.info("Web Service called: /student/remove/{id}");
 		
 		try {
 			
@@ -176,8 +188,10 @@ public class StudentController {
 	{
 		ResponseMessage<Users> responseMessage = new ResponseMessage<Users>();
 		responseMessage.setStatus(404);
-		responseMessage.setStatusText("Course Not found, invalid ID");
+		responseMessage.setStatusText("Student Not found, invalid ID");
 		Users student=null;
+		
+		LOGGER.info("Web Service called: /student/update");
 		
 		try {
 			

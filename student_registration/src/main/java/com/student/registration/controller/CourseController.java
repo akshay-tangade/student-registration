@@ -1,13 +1,12 @@
 package com.student.registration.controller;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +38,8 @@ public class CourseController {
 	
 	@Autowired
 	private CourseRepository courseRepository;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
 
 	public CourseService getCourseService() {
 		return courseService;
@@ -55,6 +56,8 @@ public class CourseController {
 		responseMessage.setStatus(404);
 		responseMessage.setStatusText("Unable to add course");
 		Course course1=null;
+		
+		LOGGER.info("Web Service called: /course/register");
 		
 		try {
 			
@@ -85,6 +88,8 @@ public class CourseController {
 		ResponseMessage<Course> responseMessage = new ResponseMessage<Course>();
 		responseMessage.setStatus(404);
 		responseMessage.setStatusText("Course Not found");
+		
+		LOGGER.info("Web Service called: /course/view/{id}");
 		
 		Course course=null;
 		
@@ -121,6 +126,8 @@ public class CourseController {
 		responseMessage.setStatus(404);
 		responseMessage.setStatusText("Course Not found");
 		
+		LOGGER.info("Web Service called: /course/view");
+		
 		List<Course> course=new ArrayList<>();
 		
 		try {
@@ -152,6 +159,8 @@ public class CourseController {
 		responseMessage.setStatus(404);
 		responseMessage.setStatusText("Course Not found");
 		
+		LOGGER.info("Web Service called: /course/remove/{id}");
+		
 		try {
 			
 			if(courseIsPresent(id))
@@ -181,6 +190,8 @@ public class CourseController {
 		responseMessage.setStatus(404);
 		responseMessage.setStatusText("Course Not found, invalid ID");
 		Course course1=null;
+		
+		LOGGER.info("Web Service called: /course/update");
 		
 		try {
 			
