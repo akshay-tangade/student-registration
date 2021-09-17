@@ -1,2 +1,2 @@
 # student-registration
-hello india
+hello world
